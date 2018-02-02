@@ -15,7 +15,8 @@
 
           <div class="zy-dialog-body" v-if="options.mode === 'prompt'">
             <div class="prompt-input-wrapper">
-              <input class="prompt-input" type="text" v-model="input" @keydown.enter="rbClick" ref="promptInput">
+              <input class="prompt-input" v-if="options.password === false" type="text" v-model="input" @keydown.enter="rbClick" ref="promptInput">
+              <input class="prompt-input" v-if="options.password === true" type="password" v-model="input" @keydown.enter="rbClick" ref="promptInput">
             </div>
           </div>
 
@@ -49,10 +50,11 @@ const OPTIONS_TEMPLATE = {
   rbDanger: false, // set to true to style the right button as danger
   lbHide: false, // hide left button
   rbHide: false, // hide right button
-  lbLabel: '取消', // left button label text
-  rbLabel: '确认', // right button label text
+  lbLabel: 'Cancel', // left button label text
+  rbLabel: 'Save', // right button label text
   actionAlt: null, // callback function when left button is clicked
-  action: null // callback function when right button is clicked
+  action: null, // callback function when right button is clicked
+  password: false
 }
 
 const CANCELLED = true
